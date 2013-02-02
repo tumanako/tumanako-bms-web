@@ -1,0 +1,46 @@
+<html>
+
+<head>
+<script language="javascript" type="text/javascript" src="jquery.js"></script>
+<script language="JavaScript"><!--
+
+intervalId = null;
+lastDelay = null;
+function refreshIt() {
+	var size = document.getElementById('size').value;
+	var count = document.getElementById('count').value;
+	var refresh = document.getElementById('refresh').value;
+	var cells = document.getElementById('cells').value;
+	document.getElementById('volts').src = 'battery.php?l=' + size + '&c=' + count + '&' + Math.random();
+	document.getElementById('soc').src = 'soc.php?l=' + size + '&c=' + count + '&' + Math.random();
+	document.getElementById('cellGraph').src = 'cells.php?l=' + size + '&c=' + count + '&cells=' + cells + '&' + Math.random();
+	document.getElementById('accessory').src = 'accessory.php?l=' + size + '&c=' + count + '&' + Math.random();
+	if (refresh != lastDelay) {
+		lastDelay = refresh;
+		if (refresh < 10) {
+			refresh = 10;
+		}
+		clearInterval(intervalId);
+		intervalId = setInterval(refreshIt, refresh * 1000);
+	}
+}
+$(document).ready(refreshIt);
+//--></script>
+</head>
+
+<body>
+<input id="size" value="1000" onchange="refreshIt();"/><input id="refresh" value="1000" onchange="refreshIt();"/><input id="count" value="1000" onchange="refreshIt();"/>
+<input id="cells" value="0" onchange="refreshIt();"/>
+<br>
+<input type="button" onClick="refreshIt();" value="Update"/>
+<br/>
+<img src="" id="volts" width="1200" height="300">
+<br>
+<img src="" id="soc" width="1200" height="300">
+<br>
+<img src="" id="cellGraph" width="1200" height="300">
+<br>
+<img src="" id="accessory" width="1200" height="300">
+</body>
+
+</html>
