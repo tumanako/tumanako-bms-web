@@ -14,7 +14,7 @@ if ($count == '') {
 $length = intval($length);
 $count = intval($count);
 
-$file = '../monitor_linux/src/c/traction2.txt';
+$file = '../monitor_linux/src/c/traction3.txt';
 $cmd = 'sh -c \'echo -e set xdata time\\\n' . 
 	'set timefmt \"%s\"\\\n' .
 	'set terminal png size 1200,300\\\n' .

@@ -28,13 +28,12 @@ $cmd = 'sh -c \'echo -e set xdata time\\\n' .
 	'set y2tics border\\\n' .
 	'set x2zeroaxis lt -1\\\n' .
 	'set terminal png size 1200,300\\\n' .
-	'plot ' .
-	'\"\\<tail -n ' . $length . ' ' . $file . '\| head -n ' . $count . '\" using 1:4 title \"Cell 0\",' .
-	'\"\\<tail -n ' . $length . ' ' . $file . '\| head -n ' . $count . '\" using 1:6 title \"Cell 1\",' .
-	'\"\\<tail -n ' . $length . ' ' . $file . '\| head -n ' . $count . '\" using 1:8 title \"Cell 2\",' .
-	'\"\\<tail -n ' . $length . ' ' . $file . '\| head -n ' . $count . '\" using 1:10 title \"Cell 4\",' .
-	'\"\\<tail -n ' . $length . ' ' . $file . '\| head -n ' . $count . '\" using 1:\(\( \$4+ \$6+ \$8+ \$10+ 0\)/4\) title \"Average\" with lines' .
-	'\\\n' .
+	'plot ';
+for ($i = 0; $i < 4; $i++) {
+	$cmd = $cmd . '\"\\<tail -n ' . $length . ' ' . $file . '\| head -n ' . $count . '\" using 1:' . ($i * 3 + 10) . ' title \"Cell ' . $i . '\" with lines,';
+}
+$cmd = substr($cmd, 0, -1);
+$cmd = $cmd . '\\\n' .
 	'\'| gnuplot';
 
 if (isset($_GET["s"])) {

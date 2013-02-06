@@ -18,7 +18,7 @@ $cellParam = isset($_GET["cells"]) ? $_GET["cells"] : '';
 $cells = explode(",", $cellParam);
 
 #	'set yrange [3300:3700]\\\n' .
-$file = '../monitor_linux/src/c/traction2.txt';
+$file = '../monitor_linux/src/c/traction3.txt';
 $cmd = 'sh -c \'echo -e set xdata time\\\n' . 
 	'set timefmt \"%s\"\\\n' .
 	'set key left top\\\n' .
@@ -35,12 +35,12 @@ $cmd = 'sh -c \'echo -e set xdata time\\\n' .
 $i = 0;
 foreach ($cells as $cell) {
 	$cell = intval($cell);
-	$cmd = $cmd . '\"\\<tail -n ' . $length . ' ' . $file . '\| head -n ' . $count . '\" using 1:' . ($cell * 2 + 4) . ' title \"Cell ' . $cell . '\" with lines,';
+	$cmd = $cmd . '\"\\<tail -n ' . $length . ' ' . $file . '\| head -n ' . $count . '\" using 1:' . ($cell * 3 + 10) . ' title \"Cell ' . $cell . '\" with lines,';
 	$i = $i + 1;
 }
 	$cmd = substr($cmd, 0, -1);
 	$cmd = $cmd . '\\\n' .
-	'\'| gnuplot';
+		'\'| gnuplot';
 
 if (isset($_GET["s"])) {
 	header('Content-type: text/plain');
