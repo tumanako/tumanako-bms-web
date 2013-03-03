@@ -15,6 +15,7 @@ function refreshIt() {
 	document.getElementById('soc').src = 'soc.php?l=' + size + '&c=' + count + '&' + Math.random();
 	document.getElementById('cellGraph').src = 'cells.php?l=' + size + '&c=' + count + '&cells=' + cells + '&' + Math.random();
 	document.getElementById('accessory').src = 'accessory.php?l=' + size + '&c=' + count + '&' + Math.random();
+	document.getElementById('temperature').src = 'temperature.php?l=' + size + '&c=' + count + '&' + Math.random();
 	if (refresh != lastDelay) {
 		lastDelay = refresh;
 		if (refresh < 10) {
@@ -41,6 +42,8 @@ $(document).ready(refreshIt);
 <img src="" id="cellGraph" width="1200" height="300">
 <br>
 <img src="" id="accessory" width="1200" height="300">
+<br>
+<img src="" id="temperature" width="1200" height="300">
 </body>
 
 </html>
