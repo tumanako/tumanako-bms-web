@@ -19,7 +19,8 @@ $cells = explode(",", $cellParam);
 
 #	'set yrange [3300:3700]\\\n' .
 $file = '../monitor_linux/src/c/traction3.txt';
-$cmd = 'sh -c \'echo -e set xdata time\\\n' . 
+$cmd = 'sh -c \'echo -e \\\n' .
+	'set xdata time\\\n' . 
 	'set timefmt \"%s\"\\\n' .
 	'set key left top\\\n' .
 	#'set nokey\\\n' .

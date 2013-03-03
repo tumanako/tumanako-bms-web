@@ -15,7 +15,8 @@ $length = intval($length);
 $count = intval($count);
 
 $file = '../monitor_linux/src/c/traction3.txt';
-$cmd = 'sh -c \'echo -e set xdata time\\\n' . 
+$cmd = 'sh -c \'echo -e \\\n' .
+	'set xdata time\\\n' . 
 	'set timefmt \"%s\"\\\n' .
 	'set terminal png size 1200,300\\\n' .
 	'set tics nomirror\\\n' .
